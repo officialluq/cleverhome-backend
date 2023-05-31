@@ -1,0 +1,15 @@
+mysql> create table UserNameAndPasswordDemo
+- > (
+- > U_Id int(10) unsigned NOT NULL AUTO_INCREMENT,
+- > UserId varchar(255) DEFAULT NULL,
+- > UserPassword varchar(255) DEFAULT NULL,
+- > primary key(U_Id),
+- > UNIQUE KEY `UserId` (`UserId`)
+- > );
+Query OK, 0 rows affected (0.61 sec)
+
+mysql> INSERT INTO UserNameAndPasswordDemo(UserId, UserPassword) VALUES ('John@gg.com', MD5('john123'));
+Query OK, 1 row affected (0.17 sec)
+
+mysql> INSERT INTO UserNameAndPasswordDemo(UserId, UserPassword) VALUES (MD5('Carol@gg.com'), MD5('123Carol'));
+Query OK, 1 row affected (0.14 sec)
