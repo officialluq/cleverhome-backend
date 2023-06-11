@@ -13,3 +13,17 @@ Query OK, 1 row affected (0.17 sec)
 
 mysql> INSERT INTO UserNameAndPasswordDemo(UserId, UserPassword) VALUES (MD5('Carol@gg.com'), MD5('123Carol'));
 Query OK, 1 row affected (0.14 sec)
+
+create table recording_list ( ID int NOT NULL AUTO_INCREMENT, Event varchar(255) NOT NULL,FileID int,  Date DATETIME DEFAULT CURRENT_TIMESTAMP,PRIMARY KEY (ID));
+
+create table notification_list( ID int NOT NULL AUTO_INCREMENT, Name varchar(100) NOT NULL ,Description varchar(255) NOT NULL ,Date DATETIME DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (ID));
+
+create table log_list( ID int NOT NULL AUTO_INCREMENT, Name varchar(100) NOT NULL ,Description varchar(255) NOT NULL ,Date DATETIME DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (ID));
+
+create table device_list( ID int NOT NULL AUTO_INCREMENT, Name varchar(100) NOT NULL, DEVICE_ID varchar(30) NOT NULL ,Date DATETIME DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (ID));
+
+create table Temperature(Value int, Date DATETIME DEFAULT CURRENT_TIMESTAMP, DEVICE_ID varchar(30));
+
+create table Humidity(Value int, Date DATETIME DEFAULT CURRENT_TIMESTAMP, DEVICE_ID varchar(30));
+
+create table Acitivity(Value int, Date DATETIME DEFAULT CURRENT_TIMESTAMP, DEVICE_ID varchar(30));
