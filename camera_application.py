@@ -45,23 +45,22 @@ class StreamingOutput(io.BufferedIOBase):
 buffor = StreamingOutput()
             
 mydb = mysql.connector.connect(
-  host="127.0.0.1",
+  host="localhost",
   user="root",
-  password="change-me",
-  database="cleverhome",
   autocommit=True
 )
 
-cred_db = mysql.connector.connect(
-  host="127.0.0.1"
-  user="root",
-  password="change-me",
-  database="users"
-)
-
+def create_database(cursor, name):
+    sql = "CREATE DATABASE IF NOT EXISTS {}".format(name)
+    cursor.execute(sql)
+    
+    
 mycursor = mydb.cursor()
+create_database(mycursor, "cleverhome")
+create_database(mycursor, "users")
+
 jsoncursor = mydb.cursor(dictionary=True, buffered=False)
-cred_curs = cred_db.cursor()
+cred_curs = mydb.cursor()
 app = FastAPI()
 origins = [
     "http://localhost.tiangolo.com",
@@ -79,6 +78,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+    
+
 # try:
 #     picam2 = Picamera2()
 #     picam2.configure(picam2.create_video_configuration(main={"size": (640, 480)}))
