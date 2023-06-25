@@ -45,7 +45,7 @@ class StreamingOutput(io.BufferedIOBase):
 buffor = StreamingOutput()
             
 mydb = mysql.connector.connect(
-  host="192.168.1.2",
+  host="127.0.0.1",
   user="root",
   password="change-me",
   database="cleverhome",
@@ -53,7 +53,7 @@ mydb = mysql.connector.connect(
 )
 
 cred_db = mysql.connector.connect(
-  host="192.168.1.2",
+  host="127.0.0.1"
   user="root",
   password="change-me",
   database="users"
